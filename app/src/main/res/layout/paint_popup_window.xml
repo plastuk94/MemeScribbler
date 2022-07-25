@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/paint_window"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#BF969696"
+    android:minWidth="0dp"
+    android:minHeight="0dp"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp">
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/red_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="1.0"
+        android:valueFrom="0"
+        android:valueTo="255"
+        app:haloColor="#FF8080"
+        app:thumbColor="#FF0000"
+        app:trackColorActive="#FF0000"
+        app:trackColorInactive="#804040" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/green_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/red_slider"
+        android:stepSize="1.0"
+        android:valueFrom="0"
+        android:valueTo="255"
+        app:haloColor="#80FF80"
+        app:thumbColor="#00FF00"
+        app:trackColorActive="#00FF00"
+        app:trackColorInactive="#408040" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/blue_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/green_slider"
+        android:layout_marginBottom="10dp"
+        android:stepSize="1.0"
+        android:valueFrom="0"
+        android:valueTo="255"
+        app:haloColor="#8080FF"
+        app:thumbColor="#0000FF"
+        app:trackColorActive="#0000FF"
+        app:trackColorInactive="#404080" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/paint_text_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/blue_slider"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:checkable="true"
+        android:text="Paint Mode"
+        app:icon="@drawable/ic_paint"
+        app:srcCompat="@drawable/ic_paint" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/stroke_size_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/blue_slider"
+        android:layout_toRightOf="@id/paint_text_button"
+        android:checkable="true"
+        android:text="Size"
+        app:icon="@drawable/ic_stroke_size"
+        app:srcCompat="@drawable/ic_text" />
+
+    <EditText
+        android:id="@+id/paint_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/paint_text_button"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Paint Text"
+        android:visibility="invisible" />
+
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/paint_button"
+        android:icon="@drawable/ic_paint"
+        android:title="@string/paint_button" />
+
+    <item
+        android:id="@+id/text_button"
+        android:icon="@drawable/ic_text"
+        android:title="@string/text_button" />
+
+    <item
+        android:id="@+id/shape_button"
+        android:icon="@drawable/ic_shape"
+        android:title="@string/shape_button" />
+
+    <item
+        android:id="@+id/open_image_button"
+        android:icon="@drawable/ic_open_image"
+        android:title="@string/open_image_button" />
+</menu>
