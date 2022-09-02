@@ -17,6 +17,7 @@ class DownloadThread(private val inURL : URL) : Thread() {
     lateinit var bitmap : Bitmap
     override fun run() {
         bitmap = BitmapFactory.decodeStream(inURL.openConnection().getInputStream())
+            .copy(Bitmap.Config.ARGB_8888, true)
     }
     fun getDownloadedBitmap() : Bitmap {
         return bitmap

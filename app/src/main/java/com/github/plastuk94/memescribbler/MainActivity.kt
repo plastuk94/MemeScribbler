@@ -41,12 +41,15 @@ class MainActivity : AppCompatActivity() {
                     val alertBuilder = AlertDialog.Builder(this)
                     val editURL = EditText(this)
                     editURL.inputType = InputType.TYPE_TEXT_VARIATION_URI
+                    paintView.setOnClickListener(null)
                     val dialogListener = DialogInterface.OnClickListener { _, i ->
                         when (i) {
                             DialogInterface.BUTTON_POSITIVE -> {
                                 val urlText = editURL.text.toString()
                                 val imageDownloader = ImageDownloader(URL(urlText))
-                                paintView.setBitmap(imageDownloader.downloadImage())
+                                val bitmap = imageDownloader.downloadImage()
+                                Log.i("MUTABLE",bitmap.isMutable.toString())
+                                paintView.setBitmap(bitmap)
                             }
                             DialogInterface.BUTTON_NEGATIVE -> {
                                 openImageLauncher.launch("image/*")
