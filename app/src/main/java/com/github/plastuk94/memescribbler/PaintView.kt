@@ -12,15 +12,17 @@ class PaintView(context: Context?, attrs: AttributeSet?) :
     ) {
     var currentColor: Int = Color.BLACK
     var paintPaint: Paint = Paint()
-    var textPaint: Paint = Paint(Paint.LINEAR_TEXT_FLAG or Paint.ANTI_ALIAS_FLAG)
-    var paintText: String = "Paint Text"
+    var paintText: String = "Text"
     var paintMode = PaintMode.PAINT
     private var paintList: ArrayList<Paint> = ArrayList<Paint>()
     private var paintModeList : ArrayList<PaintMode> = ArrayList<PaintMode>()
     private var pathList: ArrayList<Path?> = ArrayList<Path?>()
+    private var xVals: ArrayList<Float> = ArrayList<Float>()
+    private var yVals: ArrayList<Float> = ArrayList<Float>()
+    private var textStringList: ArrayList<String?> = ArrayList<String?>()
 
     enum class PaintMode {
-        PAINT, PAINT_TEXT, SHAPE, TEXT
+        PAINT, PAINT_TEXT, TEXT, INSERT_IMAGE, OPEN_IMAGE
     }
 
     private var canvas: Canvas = Canvas()
@@ -62,11 +64,23 @@ class PaintView(context: Context?, attrs: AttributeSet?) :
                     "touch up",
                     String.format("%f, %f, Color: %x", event.x, event.y, currentColor)
                 )
+
+                when (paintMode) {
+                    PaintMode.PAINT, PaintMode.PAINT_TEXT -> {
+                        pathList.add(paintPath)
+                    }
+                    PaintMode.TEXT -> {
+                        pathList.add(null)
+                    }
+                    else -> {}
+                }
+                textStringList.add(paintText)
+                xVals.add(eventX)
+                yVals.add(eventY)
                 paintList.add(paintPaint)
-                pathList.add(paintPath)
                 paintModeList.add(paintMode)
+
                 invalidate()
-                paintPaint = Paint()
                 paintPath = Path()
                 initPaint()
             }
@@ -79,8 +93,10 @@ class PaintView(context: Context?, attrs: AttributeSet?) :
         super.onDraw(canvas)
         for (i in pathList.indices) {
             when (paintModeList[i]) {
-                PaintMode.PAINT_TEXT -> canvas.drawTextOnPath(paintText,pathList[i]!!, 0f, 0f, paintList[i])
-                else -> canvas.drawPath(pathList[i]!!, paintList[i]);
+                PaintMode.PAINT_TEXT -> canvas.drawTextOnPath(textStringList[i]!!,pathList[i]!!, 0f, 0f, paintList[i])
+                PaintMode.TEXT -> canvas.drawText(textStringList[i]!!, xVals[i], yVals[i], paintList[i])
+                PaintMode.PAINT -> canvas.drawPath(pathList[i]!!, paintList[i]);
+                else -> {}
             }
         }
     }
@@ -90,12 +106,23 @@ class PaintView(context: Context?, attrs: AttributeSet?) :
         initPaint()
     }
 
-    private fun initPaint() {
-        paintPaint.style = Paint.Style.STROKE
-        paintPaint.strokeWidth = 5f
+    fun initPaint() {
         paintPaint.color = currentColor
-        paintPaint.textAlign = Paint.Align.LEFT
-        paintPaint.flags = Paint.LINEAR_TEXT_FLAG
+        when (paintMode) {
+            PaintMode.PAINT, PaintMode.PAINT_TEXT -> {
+                paintPaint = Paint()
+                paintPaint.style = Paint.Style.STROKE
+                paintPaint.strokeWidth = 5f
+                paintPaint.textAlign = Paint.Align.LEFT
+                paintPaint.flags = Paint.LINEAR_TEXT_FLAG
+                paintPaint.textSize = 50f
+            }
+            PaintMode.TEXT -> {
+                paintPaint = Paint()
+                paintPaint.textSize = 100f
+            }
+            else -> {}
+        }
     }
 
     fun togglePaintSize(): Float {

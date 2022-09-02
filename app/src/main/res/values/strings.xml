@@ -7,11 +7,11 @@
     <string name="select_button">Select</string>
     <string name="paint_button">Paint</string>
     <string name="zoom_button">Zoom</string>
-    <string name="shape_button">Shapes</string>
     <string name="copy_button">Copy</string>
     <string name="paste_button">Paste</string>
     <string name="red_slider">Red</string>
     <string name="green_slider">Green</string>
     <string name="blue_slider">Blue</string>
     <string name="paint_text_button">Paint Text</string>
+    <string name="insert_image_button">Insert Image</string>
 </resources>

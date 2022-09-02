@@ -9,12 +9,10 @@
         android:id="@+id/text_button"
         android:icon="@drawable/ic_text"
         android:title="@string/text_button" />
-
     <item
-        android:id="@+id/shape_button"
+        android:id="@+id/insert_image_button"
         android:icon="@drawable/ic_shape"
-        android:title="@string/shape_button" />
-
+        android:title="Insert Image"/>
     <item
         android:id="@+id/open_image_button"
         android:icon="@drawable/ic_open_image"

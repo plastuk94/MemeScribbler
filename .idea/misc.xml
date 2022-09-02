@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/Justin/AndroidStudioProjects/ImageandMemeEditor/app/src/main/res/drawable-anydpi/ic_paint.xml" value="0.3575" />
         <entry key="..\:/Users/Justin/AndroidStudioProjects/ImageandMemeEditor/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Justin/AndroidStudioProjects/ImageandMemeEditor/app/src/main/res/layout/open_image_dialog.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Justin/AndroidStudioProjects/ImageandMemeEditor/app/src/main/res/layout/paint_popup_window.xml" value="0.184375" />
+        <entry key="..\:/Users/Justin/AndroidStudioProjects/ImageandMemeEditor/app/src/main/res/layout/text_popup_window.xml" value="0.1757852077001013" />
         <entry key="..\:/Users/Justin/AndroidStudioProjects/ImageandMemeEditor/app/src/main/res/menu/tool_menu.xml" value="0.27291666666666664" />
       </map>
     </option>
